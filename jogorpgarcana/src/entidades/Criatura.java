@@ -16,7 +16,14 @@ public class Criatura extends Cartas {
     public void usar() {
 
     }
-
-    // Getters e setters
+    public int getpoder{
+        return poder;
+    }
+    public inte getresistencia{
+        return resistencia;
+    }
+    public String gethabilidadeEspecial{
+        return habilidadeEspecial;
+    }
 }
 

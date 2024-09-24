@@ -12,6 +12,7 @@ public class Encantamento extends Cartas {
     public void usar() {
 
     }
-
-    // Getters e setters
+    public String getefeitoContinuo{
+        return efeitoContinuo;
+    }
 }
