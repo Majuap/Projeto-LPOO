@@ -13,16 +13,16 @@ public class Criatura extends Cartas {
     }
 
     @Override
-    public void usar() {
+    public void usar(){
 
     }
-    public int getpoder{
+    public int getpoder(){
         return poder;
     }
-    public inte getresistencia{
+    public int getresistencia(){
         return resistencia;
     }
-    public String gethabilidadeEspecial{
+    public String gethabilidadeEspecial(){
         return habilidadeEspecial;
     }
 }
