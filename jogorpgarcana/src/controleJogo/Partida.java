@@ -2,16 +2,16 @@ package controleJogo;
 
 import entidades.Jogador;
 import entidades.CampoBatalha;
-import entidades.Oponente
+import entidades.Oponente;
 
 public class Partida {
     private Jogador jogador;
     private Oponente oponente;
     private CampoBatalha campo;
 
-    public Partida(Jogador jogador1, Jogador jogador2) {
-        this.jogador1 = jogador1;
-        this.jogador2 = jogador2;
+    public Partida() {
+        Jogador jogadorUm = new Jogador("Lucan");
+        Jogador jogadorDois = new Jogador("Prometheus");
         this.campo = new CampoBatalha();
     }
 
@@ -19,11 +19,16 @@ public class Partida {
         //inicial do jogo: distribuir cartas, definir ordem de turnos
     }
 
+    private int escolherAcao(int escolha){
+        //as opções usadas na partida
+        return escolha;
+    }
+
     public void turno(Jogador jogador) {
         
         jogador.comprarCarta();
-        String acao = escolherAcao();
-         switch (acao) {
+        String acao = this.escolherAcao();
+        switch (acao) {
         case "invocar":
             // O jogador escolhe uma carta para invocar
             Carta cartaInvocada = escolherCarta(); 
@@ -45,10 +50,8 @@ public class Partida {
             System.out.println("Ação inválida!");
             break;
     }
-
-        
+    
     }
-
     public boolean verificarFimDeJogo() {
         // Verifica se a partida acabou
          return jogador.getVida() <= 0 || oponente.getVida() <= 0;

@@ -12,8 +12,7 @@ public class Feitico extends Cartas {
     public void usar() {
 
     }
-    public String getefeito{
+    public String getefeito(){
         return efeito;
     }
 }
-

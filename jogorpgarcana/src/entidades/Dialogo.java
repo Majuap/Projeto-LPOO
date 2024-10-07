@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dialogo{
-    private List<DialogoInicial> dialogoInicial:
-    private List<DialogoPrePartida> dialogoPrePartida:
-    private List<DialogoPosPartida> dialogoPosPartida:
+    private List<String> dialogoInicial;
+    private List<String> dialogoPrePartida;
+    private List<String> dialogoPosPartida;
 
     public Dialogo(){
         dialogoInicial = new ArrayList<>();

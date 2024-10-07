@@ -2,41 +2,16 @@ package entidades;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Radom
+import java.util.Random;
+import entidades.Mao;
 
-public class Oponenete extends Jogador {
+public class Oponente extends Jogador {
 
-
-
-    public Oponenete(String nome) {
-        this.nome = nome;
-        this.vida = 30; // Vida inicial
-        this.mana = 1;  // Mana inicial
-        this.deck = new ArrayList<>();
-        this.mao = new ArrayList<>();
+    public Oponente (String nome){
+        super(nome);
+        //Pré definir as cartas do adversario no main?? Pose ser aqui mesmo.
     }
-
-    public void comprarCarta() {
-        if (!deck.isEmpty()) {
-            mao.add(deck.remove(0)); // Compra a primeira carta do deck
-        }
-    }
-
-  /*
-   private void inicializarDeck() { // Revisar isso!
-        for (int i = 0; i < 10; i++) {
-            deck.add(new Criatura(" " + i, 5, 3, 2, "Habilidade Especial"));
-        }
-        for (int i = 0; i < 10; i++) {
-            deck.add(new Feitico("Feitiço " + i, 2, "Efeito de Dano"));
-        }
-        for (int i = 0; i < 10; i++) {
-            deck.add(new Encantamento("Encantamento " + i, 3, "Efeito Contínuo"));
-        }
-    }
-    */
-
- public void jogar(CampoBatalha campo) {
+    public void jogar(CampoBatalha campo) {
         // O oponente compra uma carta
         comprarCarta();
 
@@ -58,11 +33,4 @@ public class Oponenete extends Jogador {
         }
     }
 
-
-    public List<Cartas> getDeck() {
-        return deck;
-    }
-}
-
-    // Getters e setters
 }

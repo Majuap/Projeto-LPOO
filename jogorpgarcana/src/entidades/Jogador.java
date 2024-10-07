@@ -1,5 +1,4 @@
 package entidades;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,6 @@ public class Jogador {
     private int mana;
     private List<Cartas> deck;
     private List<Cartas> mao;
-    inicializarDeck();
 
     public Jogador(String nome) {
         this.nome = nome;
@@ -25,20 +23,17 @@ public class Jogador {
         }
     }
 
-   /* private void inicializarDeck() { // Revisar isso!
-        for (int i = 0; i < 10; i++) {
-            deck.add(new Criatura(" " + i, 5, 3, 2, "Habilidade Especial"));
-        }
-        for (int i = 0; i < 10; i++) {
-            deck.add(new Feitico("Feitiço " + i, 2, "Efeito de Dano"));
-        }
-        for (int i = 0; i < 10; i++) {
-            deck.add(new Encantamento("Encantamento " + i, 3, "Efeito Contínuo"));
+    public static void inicializarDeck() { // Revisar isso!
+        Deck Cartas = new Deck();
+        for (int i = 0; i < 30; i++) {
+            System.out.println("Escolha as cartas que irão compor o seu deck");
+            for(int j =0; j<48; j++){
+                System.out.println(Cartas.getCartas().get(j));
+            }
+            //deck.add;
         }
     }
-    */
-
-
+    
     public void jogarCarta(int indiceCarta) {
         Cartas carta = mao.get(indiceCarta);
         if (carta.getCustoMana() <= mana) {
@@ -47,12 +42,18 @@ public class Jogador {
             mao.remove(indiceCarta);
         }
     }
-
-
     public List<Cartas> getDeck() {
         return deck;
     }
-}
 
-    // Getters e setters
+    public String getNome() {
+        return nome;
+    }
+
+    public int vida() {
+        return vida;
+    }
+    public int getMana() {
+        return mana;
+    }
 }
