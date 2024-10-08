@@ -1,11 +1,10 @@
-package controleJogo;
-
 import java.util.Scanner;
+import controleJogo.*;
 
 public class Main {
      public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Menu menu = new Menu(); // Instancia o menu
+        Menu menu = new Menu();
 
         boolean running = true;
         while (running) {

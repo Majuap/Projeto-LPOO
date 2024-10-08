@@ -21,9 +21,18 @@ public class Partida {
     }
 
     public void iniciar() {
-        //inicial do jogo: distribuir cartas, definir ordem de turnos
+        // Inicialização dos jogadores e do campo
+        System.out.println("Iniciando a partida...");
+        
+        // Distribuição de cartas para os jogadores
+        distribuirCartas(jogador);
+        distribuirCartas(oponente);
+        
+        // Exibir informações iniciais
+        System.out.println("Jogador 1: " + jogador.getNomeJogador() + " com " + jogador.getCartasNaMão().size() + " cartas.");
+        System.out.println("Jogador 2: " + oponente.getNomeJogador() + " com " + oponente.getCartasNaMão().size() + " cartas.");
     }
-
+    
     private int escolherAcao(int escolha){
         //as opções usadas na partida
         return escolha;
