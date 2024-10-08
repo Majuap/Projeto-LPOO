@@ -12,7 +12,8 @@ public class Encantamento extends Cartas {
     public void usar() {
 
     }
-    public String getefeitoContinuo{
+    
+    public String getEfeitoContinuo(){
         return efeitoContinuo;
     }
 }
