@@ -7,10 +7,10 @@ public class Encantamento extends Cartas {
         super(nome, custoMana);
         this.efeitoContinuo = efeitoContinuo;
     }
-
+    
     @Override
-    public void usar() {
-
+    public void usarCarta() {
+        System.out.println("O encantamento " + getNomeCarta() + " foi ativado! Efeito: " + efeitoContinuo);
     }
     
     public String getEfeitoContinuo(){

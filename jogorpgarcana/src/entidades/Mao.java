@@ -41,9 +41,13 @@ public class Mao {
         } else {
             System.out.println("Cartas na mão:");
             for (Cartas carta : cartasNaMao) {
-                System.out.println(carta.getNomeCarta()); // Supondo que Cartas tenha o método getNomeCarta()
+                System.out.println(carta.getNomeCarta()); // Cartas tenha o método getNomeCarta()
             }
         }
+    }
+
+    public List<Cartas> getCartas() {
+        return this.cartasNaMao;
     }
 }
 

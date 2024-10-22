@@ -23,14 +23,16 @@ public class Oponente extends Jogador {
 
             if (carta.getCustoMana() <= mana) {
                 jogarCarta(indiceCarta);
-            } else if (!campo.getCriaturas(this).isEmpty()) {
+            } else if (!campo.getCriaturas().isEmpty()) {
                 // Atacar com uma criatura
                 
-                int indiceCriatura = rand.nextInt(campo.getCriaturas(this).size());
-                Criatura criaturaAtacante = campo.getCriaturas(this).get(indiceCriatura);
+                int indiceCriatura = rand.nextInt(campo.getCriaturas().size());
+                Criatura criaturaAtacante = campo.getCriaturas().get(indiceCriatura);
 
             }
         }
     }
-
+        public List<Cartas> getCartasNaMao() {
+        return ((Mao) mao).getCartas();  // classe Mao tem o método getCartas()
+    }
 }

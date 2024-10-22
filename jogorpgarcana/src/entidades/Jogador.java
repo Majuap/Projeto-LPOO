@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
-    private String nome;
-    private int vida;
-    private int mana;
-    private List<Cartas> deck;
-    private List<Cartas> mao;
+    protected String nome;
+    protected int vida;
+    protected int mana;
+    protected List<Cartas> deck;
+    protected List<Cartas> mao;
 
     public Jogador(String nome) {
         this.nome = nome;
@@ -33,11 +33,24 @@ public class Jogador {
             //deck.add;
         }
     }
+    public void distribuirCartas(List<Cartas> deck, int quantidade) {
+        // Distribuir as cartas da lista de deck para a mão do jogador
+        for (int i = 0; i < quantidade; i++) {
+            if (!deck.isEmpty()) {
+                Cartas carta = deck.remove(0); // Remove do baralho e adiciona na mão
+                this.mao.add(carta);
+            }
+        }
+    }
+
+    public void adicionarCartaNaMão(Cartas carta) {
+        this.mao.add(carta);
+    }
     
     public void jogarCarta(int indiceCarta) {
         Cartas carta = mao.get(indiceCarta);
         if (carta.getCustoMana() <= mana) {
-            carta.usar();
+            carta.usarCarta();
             mana -= carta.getCustoMana();
             mao.remove(indiceCarta);
         }
@@ -46,8 +59,12 @@ public class Jogador {
         return deck;
     }
 
-    public String getNome() {
+    public String getNomeJogador() {
         return nome;
+    }
+
+    public List<Cartas> getCartasNaMao() {
+        return ((Deck) mao).getCartas(); //Mão tem um método getCartas()
     }
 
     public int vida() {

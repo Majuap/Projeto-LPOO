@@ -9,9 +9,11 @@ public class Feitico extends Cartas {
     }
 
     @Override
-    public void usar() {
-
+    public void usarCarta() {
+        // Implementar a lógica para quando o feitiço for usado no jogo
+        System.out.println("O feitiço " + getNomeCarta() + " foi lançado! Efeito: " + efeito);
     }
+    
     public String getefeito(){
         return efeito;
     }

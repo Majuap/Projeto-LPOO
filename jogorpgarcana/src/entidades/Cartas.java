@@ -1,8 +1,8 @@
 package entidades;
 
 public abstract class Cartas {
-    private String nome;
-    private int custoMana;
+    protected String nome;
+    protected int custoMana;
 
     public Cartas(String nome, int custoMana) {
         this.nome = nome;
@@ -17,5 +17,9 @@ public abstract class Cartas {
         return custoMana;
     }
 
-    public abstract void usar();
+    public String getNomeCarta() {
+        return this.getNomeCarta();
+    }
+
+    public abstract void usarCarta();
 }

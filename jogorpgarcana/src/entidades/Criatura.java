@@ -13,9 +13,11 @@ public class Criatura extends Cartas {
     }
 
     @Override
-    public void usar(){
+    public void usarCarta(){
+        System.out.println("A criatura " + getNomeCarta() + " foi invocada!");
 
     }
+    
     public int getpoder(){
         return poder;
     }

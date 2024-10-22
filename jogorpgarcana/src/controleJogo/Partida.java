@@ -1,6 +1,9 @@
 package controleJogo;
 
 import entidades.Jogador;
+
+import java.util.List;
+
 import entidades.CampoBatalha;
 import entidades.Cartas;
 import entidades.Oponente;
@@ -24,9 +27,10 @@ public class Partida {
         // Inicialização dos jogadores e do campo
         System.out.println("Iniciando a partida...");
         
+        List<Cartas> mao;
         // Distribuição de cartas para os jogadores
-        distribuirCartas(jogador);
-        distribuirCartas(oponente);
+        jogador.distribuirCartas(mao,5); // mao nao pode ser tratado como variavel. CORRIGIR isso depois.
+        oponente.distribuirCartas(mao, 5);
         
         // Exibir informações iniciais
         System.out.println("Jogador 1: " + jogador.getNomeJogador() + " com " + jogador.getCartasNaMão().size() + " cartas.");
@@ -40,7 +44,7 @@ public class Partida {
 
    public void turno(Jogador jogador) {
     jogador.comprarCarta();
-    int escolha = this.escolherAcao();  // Deve passar o int para escolher uma ação
+    int escolha = this.escolherAcao(escolha);  // Deve passar o int para escolher uma ação
     switch (escolha) {
         case 1: // invocar
             Cartas cartaInvocada = escolherCarta(); // Deve retornar uma subclasse de Cartas
@@ -76,6 +80,11 @@ public class Partida {
 }
     
     
+    private Cartas escolherCarta() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'escolherCarta'");
+}
+
     public boolean verificarFimDeJogo() {
         // Verifica se a partida acabou
          return jogador.getVida() <= 0 || oponente.getVida() <= 0;
