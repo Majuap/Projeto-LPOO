@@ -28,6 +28,15 @@ public class Mao {
             return null;
         }
     }
+     
+    public Cartas removerCarta(int indice) {
+        if (indice >= 0 && indice < cartasNaMao.size()) {
+            return cartasNaMao.remove(indice);
+        } else {
+            System.out.println("Índice inválido.");
+            return null;
+        }
+    }
 
     // Método para verificar o número de cartas na mão
     public int getQuantidadeDeCartas() {
@@ -47,7 +56,7 @@ public class Mao {
     }
 
     public List<Cartas> getCartas() {
-        return this.cartasNaMao;
+        return cartasNaMao;
     }
 }
 
