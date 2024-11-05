@@ -7,7 +7,10 @@ import entidades.Oponente;
 import entidades.Feitico;
 import entidades.Encantamento;
 import entidades.Criatura;
-import java.util.List;
+import exceptions.CartaNaoEncontrada;
+import exceptions.ManaInsuficiente;
+import exceptions.SemVida;
+
 import java.util.Scanner;
 
 public class Partida {
@@ -16,15 +19,23 @@ public class Partida {
     private CampoBatalha campo;
 
     public Partida() {
-        this.jogador = new Jogador("Lucan");
-        this.oponente = new Oponente("Prometheus");
+        this.jogador =new Jogador("");
+        this.oponente = new Oponente("Demian");
         this.campo = new CampoBatalha();
     }
 
-    public void iniciar() {
+    public Jogador getJogador() {
+        return jogador;
+    }
+
+    public void setJogador(Jogador jogador) {
+        this.jogador = jogador;
+    }
+
+    public void iniciar(Jogador jogadorA) {
         // Inicialização dos jogadores e do campo
         System.out.println("Iniciando a partida...");
-        
+        setJogador(jogadorA);
         // Distribuição de cartas para os jogadores
         jogador.distribuirCartas(jogador.getDeck(), 5);
         oponente.distribuirCartas(oponente.getDeck(), 5);
@@ -38,15 +49,19 @@ public class Partida {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Escolha uma ação: ");
         System.out.println("1. Invocar uma carta");
-        System.out.println("2. Atacar");
-        System.out.println("3. Passar a vez");
+        System.out.println("2. Atacar o oponente");
+        System.out.println("3. Atacar uma criatura no campo");
+        System.out.println("4. Comprar carta do Deck");
+        System.out.println("5. Passar a vez");
         return scanner.nextInt();
     }
 
-    public void turno(Jogador jogador) {
-        jogador.comprarCarta();
-        int escolha = escolherAcao();  // Captura a escolha do jogador
-
+    public void turno(Jogador jogador) throws CartaNaoEncontrada,ManaInsuficiente, SemVida {
+        //jogador.comprarCarta();, o jogador nao necessariamente precisa comprar carta no turno
+        int escolha = escolherAcao();// Captura a escolha do jogador
+        jogador.getDeck();
+        jogador.getCartasNaMao();
+        //em um turno da para fazer mais de uma coisa
         switch (escolha) {
             case 1: // Invocar
                 Cartas cartaInvocada = escolherCarta(jogador); // Agora passamos o jogador como parâmetro
@@ -62,19 +77,29 @@ public class Partida {
                 }
                 break;
 
-            case 2: // Atacar
-                if (!campo.getCriaturas(jogador).isEmpty()) {
-                    Criatura criaturaAtacante = escolherCriatura(); // Escolher a criatura para atacar
-                    oponente.receberAtaque(criaturaAtacante); // O oponente recebe o ataque
+            case 2: // Atacar o oponente
+                if (!campo.getCriaturas().isEmpty()) {
+                    //Criatura criaturaAtacante = escolherCriatura(); // Escolher a criatura para atacar
+                    //oponente.receberAtaque(); // O oponente recebe o ataque
                 } else {
                     System.out.println("Você não tem criaturas para atacar!");
                 }
                 break;
 
-            case 3: // Passar
+            case 3://atacar uma criatura no campo
+                if (!campo.getCriaturas().isEmpty()) {
+                    //Criatura criaturaAtacante = escolherCriatura(); // Escolher a criatura para atacar
+                    //oponente.receberAtaque(); // a carta no campo do adversario recebe o ataque
+                } else {
+                    System.out.println("Você não tem criaturas para atacar!");
+                }
+                break;
+            case 4://comprar carta do deck
+                jogador.comprarCarta();
+                break;
+            case 5: // Passar
                 System.out.println("Você passou a vez.");
                 break;
-
             default:
                 System.out.println("Ação inválida!");
                 break;

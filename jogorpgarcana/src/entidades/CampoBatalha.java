@@ -58,11 +58,18 @@ public class CampoBatalha {
         adicionarEfeito(feitico);
         System.out.println(jogador.getNomeJogador() + " lançou o feitiço " + feitico.getNomeCarta());
     }
+    //não precisa de um metodo invocar feitico, nem criatura nem encantamento, somente o invocar carta
 
     // Exemplo de método invocar um encantamento
     public void invocarEncantamento(Jogador jogador, Encantamento encantamento) {
         adicionarEfeito(encantamento);
         System.out.println(jogador.getNomeJogador() + " ativou o encantamento " + encantamento.getNomeCarta());
+    }
+    public void escolherCriatura(List<Criatura> getCriaturas){
+
+    }
+    public void receberAtaque(List<Criatura> getCriaturas){
+
     }
 }
 

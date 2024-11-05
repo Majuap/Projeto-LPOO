@@ -10,7 +10,7 @@ public class Mao {
         this.cartasNaMao = new ArrayList<>();
     }
 
-    // Método para adicionar uma carta à mão
+    // Metodo para adicionar uma carta à mão
     public void adicionarCarta(Cartas carta) {
         if (cartasNaMao.size() < 5) { // Supondo que a mão tem limite de 5 cartas
             cartasNaMao.add(carta);
@@ -19,7 +19,7 @@ public class Mao {
         }
     }
 
-    // Método para remover uma carta da mão
+    // Metodo para remover uma carta da mão
     public Cartas removerCarta(Cartas carta) {
         if (cartasNaMao.remove(carta)) {
             return carta;
@@ -38,19 +38,19 @@ public class Mao {
         }
     }
 
-    // Método para verificar o número de cartas na mão
+    // metodo para verificar o número de cartas na mão
     public int getQuantidadeDeCartas() {
         return cartasNaMao.size();
     }
 
-    // Método para exibir todas as cartas na mão
+    // Metodo para exibir todas as cartas na mão
     public void exibirCartas() {
         if (cartasNaMao.isEmpty()) {
             System.out.println("A mão está vazia.");
         } else {
             System.out.println("Cartas na mão:");
             for (Cartas carta : cartasNaMao) {
-                System.out.println(carta.getNomeCarta()); // Cartas tenha o método getNomeCarta()
+                System.out.println(carta.getNomeCarta()); // Cartas tenha o metodo getNomeCarta()
             }
         }
     }
