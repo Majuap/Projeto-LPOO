@@ -1,13 +1,17 @@
 package entidades;
+
+import exceptions.CartaNaoEncontrada;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Jogador {
     protected String nome;
     protected int vida;
     protected int mana;
     protected List<Cartas> deck;
-    protected Mao mao; 
+    protected Mao mao;
 
     public Jogador(String nome) {
         this.nome = nome;
@@ -17,26 +21,56 @@ public class Jogador {
         this.mao = new Mao(); // Inicialize `mao` como uma nova instância de `Mao`
     }
 
-    public void comprarCarta() {
+    public void setDeck(List<Cartas> deck) {
+        this.deck = deck;
+    }
+
+    public void inicializarDeck() {
+        Deck cartas = new Deck();
+        ColecaoCartas colecao = new ColecaoCartas();
+        ArrayList<Cartas> deckEscolhido = new ArrayList<>();  // Especifica o tipo para ArrayList
+        ArrayList<Cartas> listaCopia = new ArrayList<Cartas>(colecao.getCartas());  // Cria uma cópia da coleção de cartas
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Escolha as cartas que irão compor o seu deck");
+            for (Cartas elemento : listaCopia) {
+                System.out.println(elemento);
+            }  // Exibe a lista de cartas disponíveis
+            System.out.println("Selecione o número da carta desejada");
+            int indice = scanner.nextInt();
+            indice = indice-1;
+            if (indice >= 0 && indice < listaCopia.size()) {
+                // Adiciona a carta escolhida ao deckEscolhido e remove da listaCopia
+                deckEscolhido.add(listaCopia.get(indice));
+                listaCopia.add(indice, null);
+            } else {
+                System.out.println("Índice inválido");
+                System.out.println("Escolha as cartas que irão compor o seu deck");
+                System.out.println(listaCopia);  // Exibe a lista de cartas disponíveis
+                System.out.println("Selecione o número da carta desejada");
+                indice = scanner.nextInt();
+            }
+        }
+
+        cartas.setCartas(deckEscolhido);
+        setDeck(deckEscolhido);
+    }
+
+    public void comprarCarta() throws CartaNaoEncontrada {
         if (!deck.isEmpty()) {
-            mao.adicionarCarta(deck.remove(0)); // Usa `adicionarCarta` de `Mao`
+            mao.adicionarCarta(deck.get(0));// Usa `adicionarCarta` de `Mao`
+            deck.remove(0);
+        }
+        else{
+            throw new CartaNaoEncontrada("O Deck esta vazio");
         }
     }
 
-    public static void inicializarDeck() { // Revisar isso!
-        Deck Cartas = new Deck();
-        for (int i = 0; i < 30; i++) {
-            System.out.println("Escolha as cartas que irão compor o seu deck");
-            for(int j =0; j<48; j++){
-                System.out.println(Cartas.getCartas().get(j));
-            }
-            //deck.add;
-        }
-    }
-    public void distribuirCartas(List<Cartas> deck, int quantidade) {
+    public void distribuirCartas(List<Cartas> deck, int quantidade) {// primeira coisa que acontece na partida
         for (int i = 0; i < quantidade; i++) {
             if (!deck.isEmpty()) {
-                Cartas carta = deck.remove(0);
+                Cartas carta = deck.get(0);
+                deck.remove(0);
                 mao.adicionarCarta(carta);
             }
         }
@@ -64,7 +98,7 @@ public class Jogador {
     }
 
     public List<Cartas> getCartasNaMao() {
-        return mao.getCartas();  // Chama o método getCartas() da classe Mao
+        return mao.getCartas();  // Chama o metodo getCartas() da classe Mao
     }
 
     public int vida() {

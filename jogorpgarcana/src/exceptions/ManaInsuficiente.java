@@ -1,4 +1,4 @@
 package exceptions;
 
-public class ManaInsuficiente {
+public class ManaInsuficiente extends Exception {
 }
