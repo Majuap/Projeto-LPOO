@@ -3,10 +3,12 @@ package entidades;
 public abstract class Cartas {
     protected String nome;
     protected int custoMana;
+    protected String descricao;
 
-    public Cartas(String nome, int custoMana) {
+    public Cartas(String nome, int custoMana, String descricao) {
         this.nome = nome;
         this.custoMana = custoMana;
+        this.descricao = descricao;
     }
 
     public String getNome() {
@@ -21,5 +23,9 @@ public abstract class Cartas {
         return this.getNomeCarta();
     }
 
-    public abstract void usarCarta();
+    public String getDescricao() {
+        return descricao;
+    }
+
+    //public abstract void usarCarta();
 }
