@@ -12,7 +12,7 @@ public class Mao {
 
     // Metodo para adicionar uma carta à mão
     public void adicionarCarta(Cartas carta) {
-        if (cartasNaMao.size() < 5) { // Supondo que a mão tem limite de 5 cartas
+        if (cartasNaMao.size() < 10) { // Supondo que a mão tem limite de 10 cartas
             cartasNaMao.add(carta);
         } else {
             System.out.println("Não é possível adicionar mais cartas à mão.");

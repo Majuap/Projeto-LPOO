@@ -19,7 +19,7 @@ public class Deck {
         this.cartas = cartas;
     }
     //embaralhar o deck antes da partida comecar
-    public void embaralhar() {
+    public void embaralhar(List<Cartas> cartas) {
         Collections.shuffle(cartas);
     }
 
